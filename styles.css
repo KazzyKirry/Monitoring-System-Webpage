@@ -67,7 +67,18 @@ h2
 
 
 
+.water{
+    position: relative;
+    place-items: center;
+}
+
 #chart-water
 {
     padding: 40px;
+}
+
+.gauge-container{
+    max-width: 300px;
+    margin-right: 0px;
+    border: 0px;
 }
