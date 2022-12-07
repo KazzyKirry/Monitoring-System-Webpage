@@ -78,7 +78,7 @@ h2
 }
 
 .gauge-container{
-    max-width: 300px;
-    margin-right: 0px;
+    max-width: 600px;
     border: 0px;
+    margin: auto;
 }
