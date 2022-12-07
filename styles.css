@@ -14,10 +14,7 @@ h2
     text-align: center;
 }
 
-.header a .dash{
-    position: relative;
-    left: -750px;
-}
+
 
 .header 
 {
@@ -25,7 +22,7 @@ h2
     display: flex;
     align-items: center;
     padding: 15px 4% 10px;
-    justify-content: flex-end; 
+    justify-content: space-between; 
 }
 
 .navbar
@@ -67,6 +64,7 @@ h2
 .navbar li a:hover:after{
     width: 85%;
 }
+
 
 #chart-water
 {
