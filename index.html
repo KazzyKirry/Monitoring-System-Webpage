@@ -3,6 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="dist/gauge.min.js"></script>
+  <script type="text/javascript" src="gauge.js"> </script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,6 +25,19 @@
   </div>
 </body>
 <script>
+  var gauge1 = Gauge(
+    document.getElementById("gauge1"),
+    {
+      max: 700,
+      dialStartAngle: -90,
+      dialEndAngle: -90.001,
+      value: 0,
+      label: function(value) {
+        return (Math.round(value * 100) / 100) + "/" + this.max;
+      }
+    }
+  );
+
 var chartT = new Highcharts.Chart({
   chart:{ renderTo : 'chart-water' },
   title: { text: 'Water Sensor' },
@@ -45,12 +59,16 @@ var chartT = new Highcharts.Chart({
   },
   credits: { enabled: false }
 });
+var y = 0;
 setInterval(function ( ) {
   var xhttp = new XMLHttpRequest();
+
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      var x = (new Date()).getTime(),
-          y = parseFloat(this.responseText);
+      var x = (new Date()).getTime();
+      y = parseFloat(this.responseText);
+      gauge1.setValue(y);
+      
       if(chartT.series[0].data.length > 40) {
         chartT.series[0].addPoint([x, y], true, true, true);
       } else {
@@ -60,25 +78,7 @@ setInterval(function ( ) {
   };
   xhttp.open("GET", "/water", true);
   xhttp.send();
+
 }, 1000 ) ;
-</script>
-
-<script type="text/javascript" src="gauge.js"> </script>
-<script>
-
-var pad = function(tar) {}
-
-var gauge1 = Gauge(
-  document.getElementById("gauge1"),
-  {
-    max: 700,
-    dialStartAngle: -90,
-    dialEndAngle: -90.001,
-    value: parseFloat(this.responseText),
-    label: function(value) {
-      return (Math.round(value * 100) / 100) + "/" + this.max;
-    }
-  }
-);
 </script>
 </html>
