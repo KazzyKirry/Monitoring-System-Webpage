@@ -2,11 +2,26 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="dist/gauge.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="header">
+    <a><div class="dash">Dashboard</div></a>
+    <nav>
+      <ul class="navbar">
+        <li><a href="">Water</a></li>
+        <li><a href="">Temperature</a></li>
+        <li><a href="">Moisture</a></li>
+      </ul>
+    </nav>
+  </div>
   <h2>Water Sensor Monitoring</h2>
   <div id="chart-water" class="container"></div>
+  <div id="gauge" class="gauge-container"></div>
+  <div class="display">
+    <div id="gauge1" class="gauge-container one"></div>
+  </div>
 </body>
 <script>
 var chartT = new Highcharts.Chart({
@@ -46,5 +61,24 @@ setInterval(function ( ) {
   xhttp.open("GET", "/water", true);
   xhttp.send();
 }, 1000 ) ;
+</script>
+
+<script type="text/javascript" src="gauge.js"> </script>
+<script>
+
+var pad = function(tar) {}
+
+var gauge1 = Gauge(
+  document.getElementById("gauge1"),
+  {
+    max: 700,
+    dialStartAngle: -90,
+    dialEndAngle: -90.001,
+    value: this.responseText,
+    label: function(value) {
+      return (Math.round(value * 100) / 100) + "/" + this.max;
+    }
+  }
+);
 </script>
 </html>
