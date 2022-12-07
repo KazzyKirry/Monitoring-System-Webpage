@@ -78,7 +78,52 @@ h2
 }
 
 .gauge-container{
-    max-width: 600px;
+    max-width: 450px;
     border: 0px;
     margin: auto;
+}
+
+.table table{
+    margin: 0 auto;
+}
+
+
+#idr{
+    border: 1px white;
+    border-radius: 10px;
+    text-align: center;
+    color:white;
+    background-color: #378087;
+}
+
+#safe{
+    border: 1px white;
+    border-radius: 10px;
+    text-align: center;
+    color:white;
+    background-color: green; 
+}
+
+#cautionary{
+    border: 1px white;
+    border-radius: 10px;
+    text-align: center;
+    color:white;
+    background-color: yellow; 
+}
+
+#danger{
+    border: 1px white;
+    border-radius: 10px;
+    text-align: center;
+    color:white;
+    background-color: orange; 
+}
+
+#extreme{
+    border: 1px white;
+    border-radius: 10px;
+    text-align: center;
+    color:white;
+    background-color: red; 
 }
