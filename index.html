@@ -74,7 +74,7 @@ var gauge1 = Gauge(
     max: 700,
     dialStartAngle: -90,
     dialEndAngle: -90.001,
-    value: this.responseText,
+    value: parseFloat(this.responseText),
     label: function(value) {
       return (Math.round(value * 100) / 100) + "/" + this.max;
     }
