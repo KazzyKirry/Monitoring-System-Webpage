@@ -92,7 +92,7 @@ setInterval(function ( ) {
     if (this.readyState == 4 && this.status == 200) {
       var x = (new Date()).getTime();
       y = parseFloat(this.responseText);
-      gauge1.setValue(y);
+      gauge1.setValueAnimated(y);
       
       if(chartT.series[0].data.length > 40) {
         chartT.series[0].addPoint([x, y], true, true, true);
